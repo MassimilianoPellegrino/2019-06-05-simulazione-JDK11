@@ -26,6 +26,7 @@ public class Model {
 	public void creaGrafo(int anno) {
 		grafo = new SimpleWeightedGraph<>(DefaultWeightedEdge.class);
 		
+		
 		List<District> vertici = dao.getVertici(anno);
 				
 		for(District d1: vertici)
@@ -72,8 +73,6 @@ public class Model {
 		queue.addAll(dao.listDailyEvents(anno, mese, giorno));
 		
 		Event e;
-		int x = 0;
-		//System.out.println("dim="+queue.size());
 		
 		while((e = queue.poll()) != null) {
 			
@@ -126,8 +125,6 @@ public class Model {
 				
 				if(time>=15)
 					result++;
-				else
-					x++;
 				
 				if(e.getOffense_category_id().equals("all-other-crimes")) {
 					if(Math.random()<0.5)
@@ -144,7 +141,6 @@ public class Model {
 			}
 		}
 		
-		//System.out.println("Res="+result+"\nX="+x);
 		
 		return result;
 		
